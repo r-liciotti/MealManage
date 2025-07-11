@@ -8,8 +8,8 @@ interface Props {
 }
 function Card({ card }: Props) {
   return (
-    <CardContext.Provider value={card}>
-      <div className="card w-full max-w-xs">
+    <CardContext.Provider value={{ card: card }}>
+      <div className="card w-full max-w-sm">
         <CardHeader />
         <CardBody />
       </div>

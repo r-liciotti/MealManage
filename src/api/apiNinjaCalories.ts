@@ -3,12 +3,12 @@ import translateText from "./apiTranslate";
 import type { IIngrediente } from "../interfaces/ICard";
 
 
-const getNutritionInfo = async (query: string) => {
-    const queryTransleted = translateText(query);
-
+const getNutritionInfo = async (nameIngredient: string, peso: string) => {
+    const query = peso + "g " + await translateText(nameIngredient);
+    console.log("query", query);
     try {
         const response = await axios.get("https://api.calorieninjas.com/v1/nutrition", {
-            params: { queryTransleted },
+            params: { query },
             headers: {
                 "X-Api-Key": import.meta.env.VITE_CALORIENINNJAS_KEY,
                 "Content-Type": "application/json",
@@ -28,7 +28,8 @@ const getNutritionInfo = async (query: string) => {
 
         return ingrediente;
     } catch (error: any) {
-        console.error("Error:", error.response?.data || error.message);
+        console.error("Error:", error.response?.data || error.message || error);
+        throw error;
     }
 };
 

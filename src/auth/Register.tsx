@@ -15,34 +15,35 @@ export default function Register() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="w-full max-w-sm">
-        <input
-          className="w-full p-2 mb-2 border"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className="w-full p-2 mb-2 border"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <p className="text-red-500 mb-2">{error}</p>}
-        <button
-          onClick={handleRegister}
-          className="bg-green-600 text-white px-4 py-2 rounded w-full"
-        >
-          Registrati
-        </button>
-        <p className="mt-4 text-center">
-          Hai già un account?{" "}
-          <Link to="/login" className="text-blue-600">
-            Accedi
-          </Link>
-        </p>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <div className="card w-full max-w-sm p-4">
+        <div className="card-body">
+          <h5 className="card-title mb-2.5">Register</h5>
+
+          <input
+            className="input max-w-sm"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="input max-w-sm"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <p className="mb-2 text-red-500">{error}</p>}
+          <button onClick={handleRegister} className="btn btn-primary">
+            Registrati
+          </button>
+          <p className="mt-4 text-center">
+            Hai già un account?{" "}
+            <Link to="/login" className="text-info font-bold">
+              Accedi
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

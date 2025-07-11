@@ -20,33 +20,33 @@ export default function Login() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <div className="w-full max-w-sm">
-        <input
-          className="mb-2 w-full border p-2"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className="mb-2 w-full border p-2"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <p className="mb-2 text-red-500">{error}</p>}
-        <button
-          onClick={handleLogin}
-          className="w-full rounded bg-blue-600 px-4 py-2 text-white"
-        >
-          Login
-        </button>
-        <p className="mt-4 text-center">
-          Non hai un account?{" "}
-          <Link to="/register" className="text-blue-600">
-            Registrati
-          </Link>
-        </p>
+      <div className="card w-full max-w-sm p-4">
+        <div className="card-body">
+          <h5 className="card-title mb-2.5">Login</h5>
+          <input
+            className="input max-w-sm"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="input max-w-sm"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <p className="mb-2 text-red-500">{error}</p>}
+          <button onClick={handleLogin} className="btn btn-primary">
+            Login
+          </button>
+          <p className="mt-4 text-center">
+            Non hai un account?{" "}
+            <Link to="/register" className="text-info font-bold">
+              Registrati
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

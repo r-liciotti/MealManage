@@ -18,6 +18,7 @@ export interface ICard {
     tot_peso: number;
     tot_calorie: number;
     tot_proteine: number;
+    new?: boolean
 }
 export interface IIngrediente {
     name: string;

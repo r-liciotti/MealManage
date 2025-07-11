@@ -5,12 +5,14 @@ import { useCard } from "./CardContext";
 import { useQueryClient } from "@tanstack/react-query";
 
 function CardHeader() {
-  const card = useCard();
+  const { card } = useCard();
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
   const handleEditCard = () => {
+    console.log("Card clicked: ", card);
     useStore.setState({ cardSelected: card });
+    useStore.getState().toggleEditPastoDialog();
   };
 
   const handleRemoveCard = async () => {

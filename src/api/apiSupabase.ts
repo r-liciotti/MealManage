@@ -56,7 +56,8 @@ export const fetchPasti = async (
             tot_peso,
             tot_calorie,
             tot_proteine,
-            giorno: pasto.giornoSettimana
+            giorno: pasto.giornoSettimana,
+            new: false
         };
     });
 
@@ -163,3 +164,17 @@ export async function removePasto(card: ICard, user: User) {
 }
 
 
+export async function updatePasto(card: ICard, user: User) {
+    try {
+        // Rimuovi il pasto esistente
+        await removePasto(card, user);
+
+        // Inserisci il nuovo pasto (può avere stesso ID o dati modificati)
+        await insertPasto(card, user);
+
+        return true;
+    } catch (error) {
+        console.error("Errore in updatePasto:", error);
+        return false;
+    }
+}

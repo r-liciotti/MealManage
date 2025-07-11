@@ -38,12 +38,6 @@ function AddCardDialog() {
   const toggleAddPastoDialog = useStore((state) => state.toggleAddPastoDialog);
 
   const mutation = useMutation({
-    /*************  ✨ Windsurf Command ⭐  *************/
-    /**
-     * Inserisce il nuovo pasto nel db.
-     * @param {Object} args - oggetto con propriet 
-
-/*******  7274a88d-d8ed-4a37-83d4-7a9518a7dc9d  *******/
     mutationFn: ({ card, user }: { card: ICard; user: User }) => {
       return insertPasto(card, user);
     },

@@ -17,9 +17,12 @@ function CardsContainer({ mealName }: Props) {
     queryKey: ["pasti", giornoActive, mealName],
     queryFn: () => {
       if (!user) return Promise.resolve([]); // oppure puoi throware
+      console.log("fetchPasti");
       return fetchPasti(giornoActive, mealName, user);
     },
     enabled: !!user, // solo se user esiste
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   if (isLoading) return <div>Loading...</div>;
@@ -31,15 +34,27 @@ function CardsContainer({ mealName }: Props) {
         <div className="flex gap-3">
           <div className="btn btn-soft btn-primary flex h-fit flex-col gap-0">
             <p>Peso</p>
-            <p>{pasti?.reduce((acc, card) => acc + card.tot_peso, 0)}g</p>
+            <p>
+              {pasti?.reduce((acc, card) => acc + card.tot_peso, 0).toFixed(1)}g
+            </p>
           </div>
           <div className="btn btn-soft btn-primary flex h-fit flex-col gap-0">
             <p>Calorie</p>
-            <p>{pasti?.reduce((acc, card) => acc + card.tot_calorie, 0)}cal</p>
+            <p>
+              {pasti
+                ?.reduce((acc, card) => acc + card.tot_calorie, 0)
+                .toFixed(1)}
+              cal
+            </p>
           </div>
           <div className="btn btn-soft btn-primary flex h-fit flex-col gap-0">
             <p>Proteine</p>
-            <p>{pasti?.reduce((acc, card) => acc + card.tot_proteine, 0)}g</p>
+            <p>
+              {pasti
+                ?.reduce((acc, card) => acc + card.tot_proteine, 0)
+                .toFixed(1)}
+              g
+            </p>
           </div>
         </div>
       </div>
